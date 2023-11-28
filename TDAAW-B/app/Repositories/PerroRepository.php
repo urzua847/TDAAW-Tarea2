@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Perro;
+use App\Models\Interaccion;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -127,7 +128,6 @@ public function eliminarPerro($id)
             return response()->json(["error" => "Perro no encontrado"], Response::HTTP_NOT_FOUND);
         }
 
-        // Realizar el soft delete estableciendo la fecha y hora actual en la columna 'deleted_at'
         $perro->deleted_at = now();
         $perro->save();
 
@@ -150,18 +150,17 @@ public function eliminarPerro($id)
 }
 
 public function obtenerPerroAleatorio() {
-        
     $url = 'https://dog.ceo/api/breeds/list/all';
     $contenido = file_get_contents($url);
     $razas = json_decode($contenido, true);
 
-    
     if ($razas && isset($razas['message'])) {
         $razasArray = $razas['message'];
         $razasClaves = array_keys($razasArray);
 
-        
         $razaAleatoria = $razasClaves[array_rand($razasClaves)];
+
+
         $nombre = $razaAleatoria;
         $id = mt_rand(1, 20); 
 
@@ -171,8 +170,38 @@ public function obtenerPerroAleatorio() {
         ];
 
         return $perro;
+        
     } else {
         return ['error' => 'Error al obtener la lista de razas de perros.'];
     }
 }
+
+
+public function obtenerPerroInteresado()
+{
+    $perroInteresado = $this->obtenerPerroAleatorio();
+    $perroCandidato = $this->obtenerPerroAleatorio();
+    $preferencia = (mt_rand(0, 1) === 0) ? 'A' : 'R';
+
+    
+    $idPerroInteresado = $perroInteresado['id'];
+    $idPerroCandidato = $perroCandidato['id'];
+
+    $perros = [
+        'Interesado' => $perroInteresado,
+        'Candidato' => $perroCandidato,
+        'Preferencia' => $preferencia
+    ];
+
+    
+    $interaccion = new Interaccion();
+    $interaccion->perroInteresado_id = $idPerroInteresado;
+    $interaccion->perroCandidato_id = $idPerroCandidato;
+    $interaccion->preferencia = $preferencia;
+    $interaccion->save();
+
+    return response()->json($perros);
+}
+
+   
 }
