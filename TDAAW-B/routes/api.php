@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerrosController;
+use App\Http\Controllers\InteraccionController;
 
 Route::group(['prefix' => 'perro'], function () {
     Route::post('newPerro', [PerrosController::class, 'registrarPerro']);
@@ -11,4 +12,7 @@ Route::group(['prefix' => 'perro'], function () {
     Route::get('getPerro/{id}', [PerrosController::class, 'listarPerro']);
     Route::get('getPerroAleatorio', [PerrosController::class, 'obtenerPerroAleatorio']);
     Route::delete('deletePerro/{id}', [PerrosController::class, 'eliminarPerro']);
+    Route::post('interaccion', [InteraccionController::class, 'registrarInteraccion']);
+    Route::get('getPerro', [PerrosController::class, 'obtenerPerroInteresado']);
+
 });
