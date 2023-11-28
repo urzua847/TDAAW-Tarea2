@@ -11,4 +11,5 @@ Route::group(['prefix' => 'perro'], function () {
     Route::get('getPerro/{id}', [PerrosController::class, 'listarPerro']);
     Route::get('getPerroAleatorio', [PerrosController::class, 'obtenerPerroAleatorio']);
     Route::delete('deletePerro/{id}', [PerrosController::class, 'eliminarPerro']);
+    Route::get('perros/candidatos', [PerrosController::class, 'obtenerPerrosCandidatos']);
 });

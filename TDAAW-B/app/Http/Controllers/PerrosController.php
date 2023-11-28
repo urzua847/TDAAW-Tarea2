@@ -43,4 +43,8 @@ class PerrosController extends Controller
     public function obtenerPerroAleatorio() {
         return $this->perroRepository->obtenerPerroAleatorio();
     }
+
+    public function obtenerPerrosCandidatos($id){
+        return $this->perroRepository->obtenerPerrosCandidatos($id);
+    }   
 }
