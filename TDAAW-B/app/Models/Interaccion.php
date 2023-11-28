@@ -10,8 +10,8 @@ class Interaccion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perro_interesado_id',
-        'perro_candidato_id',
+        'PerroInteresado_id',
+        'PerroCandidato_id',
         'preferencia',
     ];
 

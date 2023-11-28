@@ -9,10 +9,10 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('interacciones', function (Blueprint $table) {
+        Schema::create('interaccions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('perro_interesado_id');
-            $table->unsignedBigInteger('perro_candidato_id');
+            $table->unsignedBigInteger('PerroInteresado_id');
+            $table->unsignedBigInteger('PerroCandidato_id');
             $table->string('preferencia');
             $table->timestamps();
         });
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('interacciones');
+        Schema::dropIfExists('interaccions');
     }
 };
