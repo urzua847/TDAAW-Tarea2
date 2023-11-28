@@ -118,32 +118,34 @@ class PerroRepository
     }
 }
 
-    public function eliminarPerro($id)
-    {
-        try {
-            $perro = Perro::find($id);
-    
-            if (!$perro) {
-                return response()->json(["error" => "Perro no encontrado"], Response::HTTP_NOT_FOUND);
-            }
-    
-            $perro->delete();
-    
-            return response()->json(["perro" => $perro], Response::HTTP_OK);
-        } catch (Exception $e) {
-            Log::info([
-                "error" => $e->getMessage(),
-                "linea" => $e->getLine(),
-                "file" => $e->getFile(),
-                "metodo" => __METHOD__
-            ]);
-    
-            return response()->json([
-                "error" => $e->getMessage(),
-                "linea" => $e->getLine(),
-                "file" => $e->getFile(),
-                "metodo" => __METHOD__
-            ], Response::HTTP_BAD_REQUEST);
+public function eliminarPerro($id)
+{
+    try {
+        $perro = Perro::find($id);
+
+        if (!$perro) {
+            return response()->json(["error" => "Perro no encontrado"], Response::HTTP_NOT_FOUND);
         }
+
+        // Realizar el soft delete estableciendo la fecha y hora actual en la columna 'deleted_at'
+        $perro->deleted_at = now();
+        $perro->save();
+
+        return response()->json(["perro" => $perro], Response::HTTP_OK);
+    } catch (Exception $e) {
+        Log::info([
+            "error" => $e->getMessage(),
+            "linea" => $e->getLine(),
+            "file" => $e->getFile(),
+            "metodo" => __METHOD__
+        ]);
+
+        return response()->json([
+            "error" => $e->getMessage(),
+            "linea" => $e->getLine(),
+            "file" => $e->getFile(),
+            "metodo" => __METHOD__
+        ], Response::HTTP_BAD_REQUEST);
     }
+}
 }
