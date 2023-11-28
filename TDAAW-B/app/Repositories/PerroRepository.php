@@ -148,4 +148,31 @@ public function eliminarPerro($id)
         ], Response::HTTP_BAD_REQUEST);
     }
 }
+
+public function obtenerPerroAleatorio() {
+        
+    $url = 'https://dog.ceo/api/breeds/list/all';
+    $contenido = file_get_contents($url);
+    $razas = json_decode($contenido, true);
+
+    
+    if ($razas && isset($razas['message'])) {
+        $razasArray = $razas['message'];
+        $razasClaves = array_keys($razasArray);
+
+        
+        $razaAleatoria = $razasClaves[array_rand($razasClaves)];
+        $nombre = $razaAleatoria;
+        $id = mt_rand(1, 20); 
+
+        $perro = [
+            'nombre' => $nombre,
+            'id' => $id
+        ];
+
+        return $perro;
+    } else {
+        return ['error' => 'Error al obtener la lista de razas de perros.'];
+    }
+}
 }
