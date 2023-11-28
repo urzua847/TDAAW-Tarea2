@@ -203,5 +203,44 @@ public function obtenerPerroInteresado()
     return response()->json($perros);
 }
 
-   
+public function obtenerPerrosAceptados($idPerroInteresado)
+{
+    try {
+        $perrosAceptados = Interaccion::where('perroInteresado_id', $idPerroInteresado)
+            ->where('preferencia', 'A')
+            ->pluck('perroCandidato_id')
+            ->toArray();
+
+        $response = ['perrosAceptados' => []];
+        foreach ($perrosAceptados as $perro) {
+            $response['perrosAceptados'][] = ['perroCandidato_id' => $perro];
+        }
+
+        return response()->json($response, Response::HTTP_OK);
+    } catch (Exception $e) {
+      
+        return response()->json(['error' => 'Ocurrió un error'], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
+    public function obtenerPerrosRechazados($idPerroInteresado)
+{
+    try {
+        $perrosAceptados = Interaccion::where('perroInteresado_id', $idPerroInteresado)
+            ->where('preferencia', 'R')
+            ->pluck('perroCandidato_id')
+            ->toArray();
+
+        $response = ['perrosRechazados' => []];
+        foreach ($perrosAceptados as $perro) {
+            $response['perrosRechazados'][] = ['perroCandidato_id' => $perro];
+        }
+
+        return response()->json($response, Response::HTTP_OK);
+    } catch (Exception $e) {
+      
+        return response()->json(['error' => 'Ocurrió un error'], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
 }
