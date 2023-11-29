@@ -208,8 +208,7 @@ public function obtenerPerrosAceptados($idPerroInteresado)
     try {
         $perrosAceptados = Interaccion::where('perroInteresado_id', $idPerroInteresado)
             ->where('preferencia', 'A')
-            ->pluck('perroCandidato_id')
-            ->toArray();
+            ->get();
 
         $response = ['perrosAceptados' => []];
         foreach ($perrosAceptados as $perro) {
@@ -228,8 +227,7 @@ public function obtenerPerrosAceptados($idPerroInteresado)
     try {
         $perrosAceptados = Interaccion::where('perroInteresado_id', $idPerroInteresado)
             ->where('preferencia', 'R')
-            ->pluck('perroCandidato_id')
-            ->toArray();
+            ->get();
 
         $response = ['perrosRechazados' => []];
         foreach ($perrosAceptados as $perro) {
