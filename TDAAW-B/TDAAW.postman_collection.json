@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "55341475-8822-487b-8fc5-319d004f5a18",
+		"name": "TDAAW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30810921"
+	},
+	"item": [
+		{
+			"name": "newPerro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"joaking\",\n    \"foto_url\": \"https://ejemplo.com/foto6.jpg\",\n    \"descripcion\": \"Este es joaking, un perro.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/newPerro",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"newPerro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerro {id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getPerro/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getPerro",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPerros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getAllPerros",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getAllPerros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerroAleatorio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getPerroAleatorio",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getPerroAleatorio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getPerro",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getPerro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerroAceptado {id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getPerroAceptado/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getPerroAceptado",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerroRechazado {id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/getPerroRechazado/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"getPerroRechazado",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerro {id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"joakinigger\",\n    \"descripcion\": \"Eeste es joakinigger.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/updatePerro/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"updatePerro",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerro {id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/perro/deletePerro/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"perro",
+						"deletePerro",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
